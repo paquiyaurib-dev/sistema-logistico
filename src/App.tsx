@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AuthProvider, type UserRole, useAuth } from './context/AuthContext';
 import { AppProvider } from './context/AppContext';
 import { PermissionProvider } from './context/PermissionContext';
@@ -63,12 +63,14 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <PermissionProvider>
-        <AppProvider>
-          <AppRoutes />
-        </AppProvider>
-      </PermissionProvider>
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <PermissionProvider>
+          <AppProvider>
+            <AppRoutes />
+          </AppProvider>
+        </PermissionProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
